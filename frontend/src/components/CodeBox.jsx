@@ -78,7 +78,7 @@ export default function CodeBox() {
       {/* Top Nav */}
       <div className="flex justify-between items-center p-4 border-b border-gray-700">
         <motion.h1
-          initial={{ x: -200, opacity: 0 }}
+          initial={{ x: -201, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ type: "spring", stiffness: 60 }}
           className="text-3xl font-bold text-blue-400"
