@@ -1,0 +1,39 @@
+# Ignore global OS/editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Ignore virtual environment at root
+venv/
+env/
+
+# Ignore Python cache and compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ignore environment/config/secrets
+.env
+*.env
+
+# Python test/coverage/cache
+.pytest_cache/
+.mypy_cache/
+.cache/
+coverage.*
+htmlcov/
+*.cover
+*.log
+
+# Ignore frontend builds (optional)
+frontend/.next/
+frontend/dist/
+frontend/.turbo/
+frontend/.parcel-cache/
+frontend/.cache/
+
+# Ignore backend builds (if any)
+backend/build/
+backend/dist/
+backend/*.egg-info/

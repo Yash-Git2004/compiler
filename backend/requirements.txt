@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+pycparser
+pydantic
+python-multipart
+django
+djangorestframework
+django-cors-headers
