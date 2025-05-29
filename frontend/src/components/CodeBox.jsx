@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { FaPlay, FaExchangeAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 export default function CodeBox() {
@@ -12,32 +13,25 @@ export default function CodeBox() {
 
   const handleRun = async () => {
     setOutput(`Running ${language} code...`);
-
     try {
-      // Step 1: Send POST request
       const postResponse = await fetch("http://localhost:8000/compiler/compile/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ code, language }),
       });
-
       const postData = await postResponse.json();
 
-      // If no placeholders, directly show output
       if (postData.output) {
         setOutput(postData.output);
       } else if (postData.code_id) {
-        // Step 2: Prepare inputs from textarea
         let inputObj = {};
         try {
-          // Assume input is a JSON object like: { "input1": "5", "input2": "hello" }
           inputObj = JSON.parse(input);
         } catch (e) {
           setOutput("Invalid input format. Use JSON like {\"input1\": \"5\"}");
           return;
         }
 
-        // Step 3: Send PUT request
         const putResponse = await fetch("http://localhost:8000/compiler/compile/", {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
@@ -55,7 +49,6 @@ export default function CodeBox() {
     }
   };
 
-
   const handleConvert = async () => {
     setOutput("Change kr rha hu bhai.....");
     try {
@@ -72,66 +65,63 @@ export default function CodeBox() {
     }
   };
 
-
   return (
-    <div className="min-h-screen bg-[#1e1e1e] text-white">
-      {/* Top Nav */}
-      <div className="flex justify-between items-center p-4 border-b border-gray-700">
+    <div className="min-h-screen bg-gradient-to-tr from-[#f5f7fa] to-[#c3cfe2] text-gray-800 p-6">
+      {/* Navbar */}
+      <div className="flex justify-between items-center mb-6">
         <motion.h1
-          initial={{ x: -200, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ type: "spring", stiffness: 60 }}
-          className="text-3xl font-bold text-blue-400"
+          initial={{ y: -50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className="text-4xl font-bold text-blue-700"
         >
-          CodeBox
+          PyBox
         </motion.h1>
-
-        
       </div>
 
-      {/* Main Split Layout */}
-      <div className="grid grid-cols-2 gap-4 p-6">
-        {/* Left: Code Editor */}
-        <div className="flex flex-col space-y-4">
-        <select
-     value={language}
-     onChange={(e) => setLanguage(e.target.value)}
-      className="bg-gray-800 p-2 rounded text-white w-fit"
-       >
-    <option value="python">Python</option>
-    <option value="c">C</option>
-    
-    </select>
+      {/* Layout */}
+      <div className="grid lg:grid-cols-2 gap-8">
+        {/* Code Editor Section */}
+        <div className="flex flex-col gap-4">
+          <div className="flex justify-between items-center">
+            <label className="font-semibold">Language:</label>
+            <select
+              value={language}
+              onChange={(e) => setLanguage(e.target.value)}
+              className="p-2 rounded bg-white border border-gray-300"
+            >
+              <option value="python">Python</option>
+              <option value="c">C</option>
+            </select>
+          </div>
           <textarea
             value={code}
             onChange={(e) => setCode(e.target.value)}
-            placeholder="# write your code here..."
-            className="h-[400px] p-4 bg-[#2d2d2d] rounded resize-none outline-none"
+            placeholder="# Write your code here..."
+            className="h-96 bg-black text-green-300 p-4 rounded font-mono text-sm"
           />
+          
+          <div className="flex gap-4 mt-2">
+            <button
+              onClick={handleRun}
+              className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+            >
+              <FaPlay /> Run
+            </button>
+            <button
+              onClick={handleConvert}
+              className="flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700"
+            >
+              <FaExchangeAlt /> Convert
+            </button>
+          </div>
         </div>
 
-        {/* Right: Input/Output */}
-        <div className="flex flex-col space-y-4">
-          <div className="flex flex-row space-x-5">
-          <button
-            onClick={handleRun}
-            className="bg-red-500 hover:bg-blue-600 w-fit px-4 py-2 rounded"
-          >
-            Run
-          </button>
-          <button
-            onClick={handleConvert}
-            className="bg-white-500 hover:bg-red-800 w-fit px-4 py-2 rounded"
-          >
-            Convert
-          </button>
-
-          </div>
-          
-          
-          <div className="bg-[#2d2d2d] p-4 rounded h-100 overflow-auto">
-            <h2 className="font-semibold mb-2">Output:</h2>
-            <pre>{output || "No output yet."}</pre>
+        {/* Output Section */}
+        <div className="bg-white p-6 rounded shadow-lg flex flex-col">
+          <h2 className="text-lg font-bold mb-2 text-gray-700">Output</h2>
+          <div className="bg-gray-900 text-green-400 p-4 rounded h-full overflow-auto font-mono text-sm whitespace-pre-wrap">
+            {output || "No output yet."}
           </div>
         </div>
       </div>
