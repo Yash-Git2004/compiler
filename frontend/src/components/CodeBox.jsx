@@ -47,7 +47,7 @@ export default function CodeBox() {
         const putData = await putResponse.json();
         setOutput(putData.output || "No output returned.");
       } else {
-        setOutput("Unexpected server response.");
+        setOutput("Bhai kuch  server response eeror aara hai.");
       }
     } catch (err) {
       console.error(err);
