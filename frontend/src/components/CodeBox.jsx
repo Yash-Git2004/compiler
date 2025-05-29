@@ -78,7 +78,7 @@ export default function CodeBox() {
       {/* Top Nav */}
       <div className="flex justify-between items-center p-4 border-b border-gray-700">
         <motion.h1
-          initial={{ x: -201, opacity: 0 }}
+          initial={{ x: -200, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ type: "spring", stiffness: 60 }}
           className="text-3xl font-bold text-blue-400"
@@ -115,13 +115,13 @@ export default function CodeBox() {
           <div className="flex flex-row space-x-5">
           <button
             onClick={handleRun}
-            className="bg-blue-500 hover:bg-blue-600 w-fit px-4 py-2 rounded"
+            className="bg-red-500 hover:bg-blue-600 w-fit px-4 py-2 rounded"
           >
             Run
           </button>
           <button
             onClick={handleConvert}
-            className="bg-green-500 hover:bg-green-600 w-fit px-4 py-2 rounded"
+            className="bg-white-500 hover:bg-green-600 w-fit px-4 py-2 rounded"
           >
             Convert
           </button>
