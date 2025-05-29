@@ -57,7 +57,7 @@ export default function CodeBox() {
 
 
   const handleConvert = async () => {
-    setOutput("Converting...");
+    setOutput("Change kr rha hu bhai.....");
     try {
       const res = await fetch("http://localhost:8001/convert", {
         method: "POST",
