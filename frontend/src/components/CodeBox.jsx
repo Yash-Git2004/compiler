@@ -121,7 +121,7 @@ export default function CodeBox() {
           </button>
           <button
             onClick={handleConvert}
-            className="bg-white-500 hover:bg-red-600 w-fit px-4 py-2 rounded"
+            className="bg-white-500 hover:bg-red-800 w-fit px-4 py-2 rounded"
           >
             Convert
           </button>
