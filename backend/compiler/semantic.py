@@ -22,7 +22,7 @@ def semantic_check(tokens):
             else:
                 raise SyntaxError(f"Expected variable name after type '{var_type}' at line {line_no}")
 
-        # Assignment Check
+        # Assignment related Check kar raha hai
         elif token_type == 'IDENTIFIER':
             var_name = token_value
             used_vars.add(var_name)
