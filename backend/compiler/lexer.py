@@ -1,4 +1,4 @@
-import re
+import re    # Regular expressions module for pattern matching
 
 KEYWORDS = {'if', 'else', 'while', 'for', 'def', 'return', 'int', 'float', 'void'}
 OPERATORS = {'+', '-', '*', '/', '=', '==', '!=', '<', '>', '<=', '>='}
