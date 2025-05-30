@@ -1,8 +1,8 @@
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from .compiler import run_code 
-import uuid
-import re
+from rest_framework.views import APIView        # Base class for DRF views
+from rest_framework.response import Response    # Used to return API responses
+from .compiler import run_code                  # Import custom function to execute code
+import uuid                                     # Used to generate unique identifiers for code submissions
+import re                                       # Regular expressions module for detecting placeholders
 
 class CompileCodeView(APIView):
     code_storage = {} 
