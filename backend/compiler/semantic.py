@@ -46,7 +46,7 @@ def semantic_check(tokens):
 
         i += 1
 
-    # Unused Variables
+    # Unused Variables hai koi to
     for var in declared_vars:
         if var not in used_vars:
             print(f"Warning: Variable '{var}' declared at line {declared_vars[var]} but never used.")
