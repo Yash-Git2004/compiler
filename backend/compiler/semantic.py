@@ -36,11 +36,11 @@ def semantic_check(tokens):
                     next_token = tokens[i+2]
                     rhs_type = get_type_of_token(next_token)
 
-                    # Type Mismatch Check
+                    # Type Mismatch Check ke liye
                     if types[var_name] != rhs_type and not (types[var_name] == 'float' and rhs_type == 'int'):
                         raise TypeError(f"Type mismatch: Cannot assign '{rhs_type}' to '{types[var_name]}' variable '{var_name}' at line {line_no}")
 
-                    # Division by zero check
+                    # Divide by zero
                     if next_token[1] == '/' and i+3 < len(tokens) and tokens[i+3][1] == '0':
                         raise ZeroDivisionError(f"Division by zero at line {tokens[i+3][2]}")
 
